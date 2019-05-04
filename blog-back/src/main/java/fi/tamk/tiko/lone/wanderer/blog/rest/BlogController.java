@@ -32,6 +32,15 @@ public class BlogController {
         return new ResponseEntity<>(blogRepository.findAllByOrderByIdDesc(), HttpStatus.OK);
     }
 
+    @RequestMapping("/posts/{id}")
+    public ResponseEntity<BlogPost> getPost(@PathVariable long id){
+        if(blogRepository.findById(id).isPresent()){
+            return new ResponseEntity<>(blogRepository.findById(id).get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PostMapping("/posts/add")
     public ResponseEntity<?> addPost(@RequestBody BlogPost blogPost){
         return new ResponseEntity<>(blogRepository.save(blogPost), HttpStatus.OK);

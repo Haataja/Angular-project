@@ -12,6 +12,8 @@ import {BlogListComponent} from './blog-list.component';
 import {BlogListItemComponent} from './blog-list-item.component';
 import {MatGridListModule} from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import {BlogComponent} from './blog.component';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     NavBarComponent,
     AboutComponent,
     BlogListComponent,
-    BlogListItemComponent
+    BlogListItemComponent,
+    BlogComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatToolbarModule,
     HttpClientModule,
     MatGridListModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatButtonModule
   ],
   providers: [BlogService],
   bootstrap: [AppComponent]

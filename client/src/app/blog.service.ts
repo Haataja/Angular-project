@@ -25,6 +25,11 @@ export class BlogService {
   }
 
   getPosts(callback: (json) => void ) {
+    console.log(this.API_URL);
     this.http.get<Blog>(this.API_URL).subscribe(json => callback(json));
+  }
+
+  blog(id: number, callback: (jsonObject) => void) {
+    this.http.get<Blog>(this.API_URL + '/' + id).subscribe(json => callback(json));
   }
 }
