@@ -3,7 +3,10 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `<app-nav-bar></app-nav-bar>
-  <app-about></app-about>`,
+  <div fxLayout="row" fxLayoutAlign="space-between">
+    <div fxFlex="75%"><app-blog-list></app-blog-list></div>
+    <div fxFlex="25%"><app-about></app-about></div>
+  </div>`,
   styles: [`mat-toolbar{background-color: white; border-bottom: lightgray 1px solid;}`]
 })
 export class AppComponent {

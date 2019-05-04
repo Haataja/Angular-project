@@ -6,9 +6,7 @@ import { Component } from '@angular/core';
   <img src="../assets/Gallen_Kallela.jpg"/>
   <p>{{about}}</p>
   <h3>{{'recent posts' | uppercase}}</h3>`,
-  styles: [`h3:after {position: absolute;content: "";
-    left: 0;height: 2px;width: 40px;background: #a161bf;box-sizing: border-box;}
-  img {height: auto;max-width: 50%;}`]
+  styles: [`img {height: auto;max-width: 50%;}`]
 })
 export class AboutComponent {
   title = 'about us';
