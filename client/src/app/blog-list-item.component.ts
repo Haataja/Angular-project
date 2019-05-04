@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Blog, BlogService} from './blog.service';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-blog-list-item',

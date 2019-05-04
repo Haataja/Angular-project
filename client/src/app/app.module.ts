@@ -10,10 +10,16 @@ import {BlogService} from './blog.service';
 import {HttpClientModule} from '@angular/common/http';
 import {BlogListComponent} from './blog-list.component';
 import {BlogListItemComponent} from './blog-list-item.component';
-import {MatGridListModule} from '@angular/material';
+import {MatGridListModule, MatInputModule} from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {BlogComponent} from './blog.component';
 import {MatButtonModule} from '@angular/material/button';
+import {CommentListComponent} from './comment-list.component';
+import {MatDividerModule} from '@angular/material/divider';
+import {CommentComponent} from './comment.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +28,9 @@ import {MatButtonModule} from '@angular/material/button';
     AboutComponent,
     BlogListComponent,
     BlogListItemComponent,
-    BlogComponent
+    BlogComponent,
+    CommentListComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +39,12 @@ import {MatButtonModule} from '@angular/material/button';
     HttpClientModule,
     MatGridListModule,
     FlexLayoutModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDividerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [BlogService],
   bootstrap: [AppComponent]

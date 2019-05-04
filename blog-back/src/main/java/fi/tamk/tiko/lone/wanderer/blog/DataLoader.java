@@ -242,9 +242,9 @@ public class DataLoader implements ApplicationRunner {
                 "sinä ilmoisna ikänä, kuuna kullan valkeana \n" +
                 "naista kullaista kosiko, hope'ista huolitelko! \n" +
                 "Kylmän kulta kuumottavi, vilun huohtavi hopea.\"", "Katkelma 37. runosta", "Kalevala",
-                new Comment("Very good poem this is.","good","Seppo Ilmarinen"),
-                new Comment("Did not like","did not like","Maiden of the north"),
-                new Comment("Too long, add tl:dr please.","Too long","Did not read"));
+                new Comment("Very good poem this is.","Seppo Ilmarinen"),
+                new Comment("Did not like","Maiden of the north"),
+                new Comment("Too long, add tl:dr please.","Did not read"));
 
         list.add(kalevala);
         list.add(new BlogPost(" \"Mie olen hirven hiihannassa,\n" +

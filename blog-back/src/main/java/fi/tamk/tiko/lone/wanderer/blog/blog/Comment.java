@@ -13,6 +13,7 @@ package fi.tamk.tiko.lone.wanderer.blog.blog;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 public class Comment {
@@ -25,16 +26,17 @@ public class Comment {
     @JsonIgnore
     private BlogPost blogPost;
     private String commentField;
-    private String commentTitle;
+    private LocalDateTime dateTime;
     private String nickname;
 
     public Comment() {
+        dateTime = LocalDateTime.now();
     }
 
-    public Comment(String commentField, String commentTitle, String nickname) {
+    public Comment(String commentField, String nickname) {
         this.commentField = commentField;
-        this.commentTitle = commentTitle;
         this.nickname = nickname;
+        dateTime = LocalDateTime.now();
     }
 
     public BlogPost getBlogPost() {
@@ -61,12 +63,8 @@ public class Comment {
         this.commentField = commentField;
     }
 
-    public String getCommentTitle() {
-        return commentTitle;
-    }
-
-    public void setCommentTitle(String commentTitle) {
-        this.commentTitle = commentTitle;
+    public LocalDateTime getDateTime() {
+        return dateTime;
     }
 
     public String getNickname() {
