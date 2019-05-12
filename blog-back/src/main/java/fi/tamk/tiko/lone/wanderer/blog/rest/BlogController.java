@@ -20,12 +20,19 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+
 @RestController
 public class BlogController {
     Logger log = LoggerFactory.getLogger(this.getClass());
     @Autowired
     private BlogRepository blogRepository;
 
+
+    @RequestMapping("/user")
+    public ResponseEntity<?> user(Principal user) {
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
 
     @RequestMapping("/posts")
     public ResponseEntity<Iterable<BlogPost>> getPosts(){

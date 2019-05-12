@@ -8,7 +8,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class MvcConfig implements WebMvcConfigurer {
 
     public void addCorsMappings(CorsRegistry registry) {
-         registry.addMapping("/posts/**")
+        registry.addMapping("/user")
+                .allowedOrigins("*")
+                .allowedMethods("GET", "OPTIONS", "POST", "PUT", "DELETE");
+        registry.addMapping("/posts/**")
                 .allowedOrigins("*")
                 .allowedMethods("GET", "OPTIONS", "POST", "PUT", "DELETE");
         registry.addMapping("/comment/**")

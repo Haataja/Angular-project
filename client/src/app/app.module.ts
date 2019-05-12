@@ -20,6 +20,8 @@ import {CommentComponent} from './comment.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
+import {LoginDialogComponent} from './login.dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import {FormsModule} from '@angular/forms';
     BlogListItemComponent,
     BlogComponent,
     CommentListComponent,
-    CommentComponent
+    CommentComponent,
+    LoginDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -44,9 +47,11 @@ import {FormsModule} from '@angular/forms';
     MatFormFieldModule,
     MatInputModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule
   ],
   providers: [BlogService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ LoginDialogComponent ]
 })
 export class AppModule { }
