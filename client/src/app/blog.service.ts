@@ -67,4 +67,14 @@ export class BlogService {
     this.http.post(this.API_URL + '/logout', {});
     this.authenticated = false;
   }
+
+  deleteBlog(id: number, callback: () => void ) {
+    console.log(this.API_BLOG_URL + '/' + id);
+    this.http.get(this.API_BLOG_URL + '/delete/' + id).subscribe((json) => callback());
+  }
+
+  deleteComment(id: number, commentId: number, callback: () => void) {
+    console.log(this.API_COMMENT_URL + '/delete/' + id + '?commentId=' + commentId);
+    this.http.get(this.API_COMMENT_URL + '/delete/' + id + '?commentId=' + commentId).subscribe(callback);
+  }
 }

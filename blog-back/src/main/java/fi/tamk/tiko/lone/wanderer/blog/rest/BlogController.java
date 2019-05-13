@@ -71,9 +71,9 @@ public class BlogController {
     public ResponseEntity<?> deletePost(@PathVariable long id){
         if(blogRepository.findById(id).isPresent()){
             blogRepository.deleteById(id);
-            return new ResponseEntity<>("ok",HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.OK);
         } else {
-            return new ResponseEntity<>("error",HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 

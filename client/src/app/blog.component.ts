@@ -11,7 +11,7 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
       <div><span *ngFor="let para of paragraphs">{{para}} <br/></span></div>
 
       <div *ngIf="blog.commentList.length !== 0">
-        <comment-list [comments]="blog.commentList"></comment-list>
+        <comment-list (deleteClicked)="this.refresh()" [id]="blog.id" [comments]="blog.commentList"></comment-list>
       </div>
       <div *ngIf="blog.commentList.length === 0">
         <mat-divider></mat-divider>
