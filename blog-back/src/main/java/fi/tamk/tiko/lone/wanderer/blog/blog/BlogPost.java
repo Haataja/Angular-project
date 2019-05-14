@@ -31,6 +31,7 @@ public class BlogPost {
     private int likes;
     @OneToMany(mappedBy = "blogPost",cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Comment.class, orphanRemoval=true)
     private List<Comment> commentList;
+    private String url;
 
     public BlogPost() {
         setCreationDate(LocalDate.now());
@@ -96,5 +97,13 @@ public class BlogPost {
 
     public int getLikes() {
         return likes;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

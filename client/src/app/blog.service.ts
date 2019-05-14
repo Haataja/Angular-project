@@ -8,6 +8,7 @@ export interface Blog {
   title: string;
   author: string;
   likes: number;
+  url?: number;
   commentList: Comments[];
 }
 
@@ -49,10 +50,12 @@ export class BlogService {
     });
   }
 
-  authenticate(credentials: {username, password}, callback) {
+  authenticate(credentials: { username, password }, callback) {
     console.log(credentials);
-    const headers = new HttpHeaders(credentials ? {authorization: 'Basic ' +
-    btoa(credentials.username + ':' + credentials.password)} : {});
+    const headers = new HttpHeaders(credentials ? {
+      authorization: 'Basic ' +
+        btoa(credentials.username + ':' + credentials.password)
+    } : {});
     console.log(headers);
     this.http.get(this.API_URL + '/user', {headers, observe: 'response'}).subscribe(response => {
       console.log(response);
@@ -68,7 +71,7 @@ export class BlogService {
     this.authenticated = false;
   }
 
-  deleteBlog(id: number, callback: () => void ) {
+  deleteBlog(id: number, callback: () => void) {
     console.log(this.API_BLOG_URL + '/' + id);
     this.http.get(this.API_BLOG_URL + '/delete/' + id).subscribe((json) => callback());
   }
@@ -76,5 +79,48 @@ export class BlogService {
   deleteComment(id: number, commentId: number, callback: () => void) {
     console.log(this.API_COMMENT_URL + '/delete/' + id + '?commentId=' + commentId);
     this.http.get(this.API_COMMENT_URL + '/delete/' + id + '?commentId=' + commentId).subscribe(callback);
+  }
+
+  sendBlog(userInput: { title: string, author: string, post: string, url?: string }, callback: () => void) {
+    console.log(this.API_BLOG_URL + '/add');
+    if (userInput.url !== undefined) {
+      const body = {author: userInput.author, title: userInput.title, post: userInput.post, url: userInput.url};
+      this.http.post(this.API_BLOG_URL + '/add', body,
+        {observe: 'response'}).subscribe(response => {
+        if (response.status === 200) {
+          callback();
+        }
+      });
+    } else {
+      const body = {author: userInput.author, title: userInput.title, post: userInput.post};
+      this.http.post(this.API_BLOG_URL + '/add', body,
+        {observe: 'response'}).subscribe(response => {
+        if (response.status === 200) {
+          callback();
+        }
+      });
+    }
+  }
+
+
+  modifyBlog(userInput: { title: string, author: string, post: string, url?: string }, blogID, callback: () => void) {
+    console.log(this.API_BLOG_URL + '/posts/modify/' + blogID);
+    if (userInput.url !== undefined) {
+      const body = {author: userInput.author, title: userInput.title, post: userInput.post, url: userInput.url};
+      this.http.post(this.API_BLOG_URL + '/modify/' + blogID, body,
+        {observe: 'response'}).subscribe(response => {
+        if (response.status === 200) {
+          callback();
+        }
+      });
+    } else {
+      const body = {author: userInput.author, title: userInput.title, post: userInput.post};
+      this.http.post(this.API_BLOG_URL + '/modify/' + blogID, body,
+        {observe: 'response'}).subscribe(response => {
+        if (response.status === 200) {
+          callback();
+        }
+      });
+    }
   }
 }

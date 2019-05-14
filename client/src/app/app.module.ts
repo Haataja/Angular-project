@@ -22,6 +22,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
 import {LoginDialogComponent} from './login.dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import {BlogAddDialogComponent} from "./blog.add.dialog.component";
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     BlogComponent,
     CommentListComponent,
     CommentComponent,
-    LoginDialogComponent
+    LoginDialogComponent,
+    BlogAddDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +54,6 @@ import {MatDialogModule} from '@angular/material/dialog';
   ],
   providers: [BlogService],
   bootstrap: [AppComponent],
-  entryComponents: [ LoginDialogComponent ]
+  entryComponents: [ LoginDialogComponent, BlogAddDialogComponent ]
 })
 export class AppModule { }

@@ -50,6 +50,7 @@ public class BlogController {
 
     @PostMapping("/posts/add")
     public ResponseEntity<?> addPost(@RequestBody BlogPost blogPost){
+        //log.debug(blogPost.getAuthor() + " : " + blogPost.getTitle() + " : " + blogPost.getPost() + " : "+blogPost.getUrl() + " : ");
         return new ResponseEntity<>(blogRepository.save(blogPost), HttpStatus.OK);
     }
 
