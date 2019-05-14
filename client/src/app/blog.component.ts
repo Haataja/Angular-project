@@ -9,7 +9,6 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
       <h1>{{blog.title}}</h1>
       <span>Posted on {{blog.creationDate | date}} by {{blog.author}}</span>
       <div><span *ngFor="let para of paragraphs">{{para}} <br/></span></div>
-
       <div *ngIf="blog.commentList.length !== 0">
         <comment-list (deleteClicked)="this.refresh()" [id]="blog.id" [comments]="blog.commentList"></comment-list>
       </div>

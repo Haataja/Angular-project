@@ -23,7 +23,7 @@ export class BlogService {
   API_URL = 'http://localhost:8080';
   API_BLOG_URL = this.API_URL + '/posts';
   API_COMMENT_URL = this.API_URL + '/comment';
-  public authenticated = false;
+  public authenticated = true;
 
   constructor(private http: HttpClient) {
   }
