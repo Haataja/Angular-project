@@ -5,9 +5,9 @@ import {NgForm} from '@angular/forms';
 @Component({
   selector: 'app-comment',
   template: `
-    <form #form="ngForm">
+    <form #form="ngForm" class="container">
       <mat-form-field>
-        <textarea type="text" id="comment" name="user_comment" pattern=".{3,}"
+        <textarea type="text" id="comment" name="user_comment" pattern=".{3,}" rows="4"
                   #commentElement="ngModel" [(ngModel)]="userInput.comment" matInput required
                   placeholder="Comment"></textarea>
         <mat-hint [hidden]="commentElement.valid || commentElement.pristine">
@@ -25,7 +25,7 @@ import {NgForm} from '@angular/forms';
       <button [disabled]="!form.form.valid" type="submit" mat-raised-button (click)="send(form)">Send</button>
     </form>
   `,
-  styles: [``]
+  styles: [`.container {display: flex;flex-direction: column; margin-left: 20px}.container > * {width: 70%}`]
 })
 export class CommentComponent {
   userInput = {nickname: '', comment: ''};

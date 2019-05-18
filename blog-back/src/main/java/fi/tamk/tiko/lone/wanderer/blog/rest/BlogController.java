@@ -120,4 +120,17 @@ public class BlogController {
             return new ResponseEntity<>(0, HttpStatus.NOT_FOUND);
         }
     }
+
+    @RequestMapping("/posts/unlike/{postID}")
+    public ResponseEntity<Integer> unlikePost(@PathVariable long postID){
+        //log.debug("Getting a like");
+        if(blogRepository.findById(postID).isPresent()){
+            BlogPost blogPost = blogRepository.findById(postID).get();
+            blogPost.setLikes(blogPost.getLikes() - 1);
+            blogRepository.save(blogPost);
+            return new ResponseEntity<>(blogPost.getLikes(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(0, HttpStatus.NOT_FOUND);
+        }
+    }
 }

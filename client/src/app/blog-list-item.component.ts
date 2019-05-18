@@ -8,11 +8,16 @@ import {Router} from '@angular/router';
     <li>
       <h2>{{blog.title}}</h2>
       <h3>Posted on {{blog.creationDate}} by {{blog.author}}</h3>
+      <div *ngIf="blog.url !== null">
+        <img src="{{blog.url}}" alt="image to the post"/>
+      </div>
       <p>{{blog.post.substr(0,125)}}...</p>
       <button mat-raised-button (click)="toDetails()">Read more</button>
       <button mat-raised-button color="warn" *ngIf="this.blogService.authenticated" (click)="deleteBlog()">Delete</button>
+      <mat-divider></mat-divider>
     </li>`,
-  styles: [``]
+  styles: [`h2, h3 {text-align: center} button {margin-left: 20px; margin-bottom: 10px} img{max-width: 25%}
+            li {text-align: center}`]
 })
 export class BlogListItemComponent {
   @Input() blog: Blog;

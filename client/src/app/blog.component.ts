@@ -9,23 +9,26 @@ import {MatDialog} from '@angular/material';
   template: `
     <button mat-raised-button *ngIf="this.service.authenticated" (click)="openModifyDialog()">Modify</button>
     <div *ngIf="isDefined">
-      <h1>{{blog.title}}</h1>
-      <span>Posted on {{blog.creationDate | date}} by {{blog.author}}</span>
-      <div *ngIf="blog.url !== null"><img src="{{blog.url}}" alt="image to the post"/></div>
-      <div><span *ngFor="let para of paragraphs">{{para}} <br/></span></div>
+      <div class="head">
+        <h1>{{blog.title}}</h1>
+        <span>Posted on {{blog.creationDate | date}} by {{blog.author}}</span>
+        <div *ngIf="blog.url !== null"><img src="{{blog.url}}" alt="image to the post"/></div>
+      </div>
+      <div class="text">
+        <span *ngFor="let para of paragraphs">{{para}} <br/></span>
+      </div>
+      <app-like-item [likes]="blog.likes" [blogID]="blog.id" (likeClicked)="this.refresh()"></app-like-item>
+      <mat-divider></mat-divider>
       <div *ngIf="blog.commentList.length !== 0">
         <comment-list (deleteClicked)="this.refresh()" [id]="blog.id" [comments]="blog.commentList"></comment-list>
       </div>
-      <div *ngIf="blog.commentList.length === 0">
-        <mat-divider></mat-divider>
+      <div *ngIf="blog.commentList.length === 0" class="be-first">
         <span>Be first to comment</span>
       </div>
       <app-comment [blogID]="blog.id" (sendClicked)="this.refresh()"></app-comment>
     </div>
   `,
-  styles: [`img {
-    max-width: 100%
-  }`]
+  styles: [`img {max-width: 100%} .head {text-align: center} .text {margin-left: 20px; margin-bottom: 30px} .be-first{text-align: right}`]
 })
 export class BlogComponent implements OnInit {
   isDefined = false;

@@ -1,21 +1,21 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Blog, BlogService} from './blog.service';
+import {Blog, BlogService, Comments} from './blog.service';
 
 @Component({
   selector: 'comment-list',
   template: `<ul>
     <div *ngFor="let comment of comments">
-      <mat-divider></mat-divider>
       <h4>{{comment.nickname}}</h4>
       <span>{{comment.dateTime | date}}</span>
       <p>{{comment.commentField}}</p>
       <button mat-raised-button color="warn" *ngIf="this.blogService.authenticated" (click)="deleteComment(comment.id)">Delete</button>
+      <mat-divider></mat-divider>
     </div>
   </ul>`,
   styles: [`ul{list-style-type: none}`]
 })
 export class CommentListComponent {
-  @Input() comments: Comment[];
+  @Input() comments: Comments[];
   @Input() id: number;
   @Output() deleteClicked = new EventEmitter<string>();
 

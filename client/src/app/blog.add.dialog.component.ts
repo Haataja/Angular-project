@@ -7,7 +7,7 @@ import {DialogData} from './nav-bar.component';
   template: `<h1 mat-dialog-title>Add blog post</h1>
   <div mat-dialog-content class="container">
     <form #form="ngForm" class="container">
-      <mat-form-field class="container">
+      <mat-form-field>
         <input type="text" id="author" name="author" pattern=".{3,}"
                #author="ngModel" [(ngModel)]="data.author" matInput required
                placeholder="author"/>
@@ -47,15 +47,7 @@ import {DialogData} from './nav-bar.component';
       <br/>
     </form>
   </div>`,
-  styles: [`
-  .container {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .example-container > * {
-    width: 100%;
-  }`]
+  styles: [`.container {display: flex;flex-direction: column;}.container > * {width: 100%}`]
 })
 export class BlogAddDialogComponent {
 

@@ -124,4 +124,20 @@ export class BlogService {
       });
     }
   }
+
+  like(blogID: number, callback: () => void) {
+    this.http.get(this.API_BLOG_URL + '/like/' + blogID, {observe: 'response'}).subscribe(response => {
+      if (response.status === 200) {
+        callback();
+      }
+    });
+  }
+
+  unlike(blogID: number, callback: () => void) {
+    this.http.get(this.API_BLOG_URL + '/unlike/' + blogID, {observe: 'response'}).subscribe(response => {
+      if (response.status === 200) {
+        callback();
+      }
+    });
+  }
 }
