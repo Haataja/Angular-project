@@ -70,6 +70,7 @@ public class DataLoader implements ApplicationRunner {
                 "Laske ei laatuista iloa,\n" +
                 "Kun on huolista kuvattu,\n" +
                 "Murehista muovaeltu.","Eriskummainen kantele","Kanteletar"));
+        list.get(1).setUrl("https://peda.net/lohja/peruskoulut/alakoulut/ristin-koulu/luokat/anna/kalevala/kuvia-kalevalasta/testi:file/photo/9e074a94cb648c86f97c45fb28aac9ece8201675/036-akseli-gallen-kallela-theredlist.jpg");
         list.add(new BlogPost("Vaka vanha Väinämöinen otti ruskean orihin, \n" +
                 "pani varsan valjahisin, ruskean re'en etehen; \n" +
                 "itse reuoikse rekehen, kohennaikse korjahansa.\n" +
@@ -303,6 +304,7 @@ public class DataLoader implements ApplicationRunner {
                 "sinne mä, kana, katosin, lintu, kuolin liian surman:\n" +
                 "elköhön minun isoni sinä ilmoisna ikänä\n" +
                 "vetäkö ve'en kaloja tältä suurelta selältä!","Katkelma 4. runosta","Kalevala"));
+        list.get(list.size() - 1).setUrl("https://images.cdn.yle.fi/image/upload/f_auto,fl_progressive/q_88/w_2718,h_1529,c_crop,x_0,y_136/w_1200/v1551368312/17-2028154ec965d520ed.jpg");
         list.add(new BlogPost("Mik' otti isolta mielen,\n" +
                 "Kuka kummanen emolta,\n" +
                 "Leskelle minun lupasi,\n" +
@@ -340,6 +342,7 @@ public class DataLoader implements ApplicationRunner {
                 "Paasi toisen parkasevi,\n" +
                 "Lesken on leukansa lukossa,\n" +
                 "Koko suunsa sulkehessa.","Lempo leskelle menevi","Kanteletar"));
+        list.get(list.size() - 1).setUrl("https://i.pinimg.com/originals/e0/41/f9/e041f94aaf4d5dad88780fc63411fa78.jpg");
         blogRepository.saveAll(list);
     }
 

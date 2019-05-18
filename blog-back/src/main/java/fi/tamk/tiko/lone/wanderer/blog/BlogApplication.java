@@ -30,6 +30,8 @@ public class BlogApplication {
         log.info("Delete comment from post: curl -X GET {}{}",BASEURL,"/comment/delete/{postID}");
         log.info("------------");
         log.info("Add like to the post: curl -X GET {}{}",BASEURL,"/posts/like/{postID}");
+        log.info("------------");
+        log.info("Add like to the post: curl -X GET {}{}",BASEURL,"/posts/unlike/{postID}");
     }
 
 }
