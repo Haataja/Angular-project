@@ -6,10 +6,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 
-@SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
+@SpringBootApplication//(exclude = { SecurityAutoConfiguration.class })
 public class BlogApplication {
-    public static String BASEURL = "http://localhost:8080/";
-    public static String RESOURCE = "posts/";
+    public static String BASEURL = "http://localhost:8080";
+    public static String RESOURCE = "/posts";
 
     private static Logger log = LoggerFactory.getLogger(BlogApplication.class);
 
@@ -25,7 +25,7 @@ public class BlogApplication {
         log.info("------------");
         log.info("Delete post: curl -X GET {}{}",BASEURL,RESOURCE + "/delete/{id}");
         log.info("------------");
-        log.info("Add comment to post: curl -X POST -d 'commentTitle': '','commentField':'', 'nickname':''} {}{}",BASEURL,"comment/add/{postID}");
+        log.info("Add comment to post: curl -X POST -d 'commentTitle': '','commentField':'', 'nickname':''} {}{}",BASEURL,"/comment/add/{postID}");
         log.info("------------");
         log.info("Delete comment from post: curl -X GET {}{}",BASEURL,"/comment/delete/{postID}");
         log.info("------------");

@@ -62,6 +62,9 @@ public class BlogController {
             firstBlogPost.setAuthor(blogPost.getAuthor());
             firstBlogPost.setPost(blogPost.getPost());
             firstBlogPost.setTitle(blogPost.getTitle());
+            if(blogPost.getUrl() != null){
+                firstBlogPost.setUrl(blogPost.getUrl());
+            }
             return new ResponseEntity<>(blogRepository.save(firstBlogPost), HttpStatus.OK);
         }else {
             return new ResponseEntity<>(blogPost, HttpStatus.NOT_FOUND);

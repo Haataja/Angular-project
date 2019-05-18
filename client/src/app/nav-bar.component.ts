@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material';
 import {LoginDialogComponent} from './login.dialog.component';
 import {BlogService} from './blog.service';
-import {BlogAddDialogComponent} from "./blog.add.dialog.component";
+import {BlogAddDialogComponent} from './blog.add.dialog.component';
 
 export interface DialogData {
   password: string;

@@ -105,6 +105,7 @@ export class BlogService {
 
   modifyBlog(userInput: { title: string, author: string, post: string, url?: string }, blogID, callback: () => void) {
     console.log(this.API_BLOG_URL + '/posts/modify/' + blogID);
+    console.log(userInput);
     if (userInput.url !== undefined) {
       const body = {author: userInput.author, title: userInput.title, post: userInput.post, url: userInput.url};
       this.http.post(this.API_BLOG_URL + '/modify/' + blogID, body,
