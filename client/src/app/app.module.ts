@@ -10,7 +10,7 @@ import {BlogService} from './blog.service';
 import {HttpClientModule} from '@angular/common/http';
 import {BlogListComponent} from './blog-list.component';
 import {BlogListItemComponent} from './blog-list-item.component';
-import {MatGridListModule, MatIconModule, MatInputModule} from '@angular/material';
+import {MatAutocompleteModule, MatGridListModule, MatIconModule, MatInputModule} from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {BlogComponent} from './blog.component';
 import {MatButtonModule} from '@angular/material/button';
@@ -19,11 +19,12 @@ import {MatDividerModule} from '@angular/material/divider';
 import {CommentComponent} from './comment.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {LoginDialogComponent} from './login.dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {BlogAddDialogComponent} from './blog.add.dialog.component';
 import {LikeComponent} from './like.component';
+import {SearchComponent} from "./search.component";
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {LikeComponent} from './like.component';
     CommentComponent,
     LoginDialogComponent,
     BlogAddDialogComponent,
-    LikeComponent
+    LikeComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,8 @@ import {LikeComponent} from './like.component';
     BrowserAnimationsModule,
     FormsModule,
     MatDialogModule,
-    MatIconModule
+    MatAutocompleteModule,
+    ReactiveFormsModule
   ],
   providers: [BlogService],
   bootstrap: [AppComponent],

@@ -29,9 +29,9 @@ export class BlogService {
   constructor(private http: HttpClient) {
   }
 
-  getPosts(callback: (json) => void) {
+  getPosts(callback: (json: Blog[]) => void) {
     console.log(this.API_BLOG_URL);
-    this.http.get<Blog>(this.API_BLOG_URL).subscribe(json => callback(json));
+    this.http.get<Blog[]>(this.API_BLOG_URL).subscribe(json => callback(json));
   }
 
   blog(id: number, callback: (jsonObject) => void) {

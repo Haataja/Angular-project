@@ -18,8 +18,10 @@ export interface DialogData {
     <button mat-raised-button (click)="openDialog()" *ngIf="!this.blogService.authenticated">Login</button>
     <button mat-raised-button *ngIf="this.blogService.authenticated" (click)="logout()">Logout</button>
     <button mat-raised-button *ngIf="this.blogService.authenticated" (click)="openAddDialog()">Add Post</button>
+    <span class="spacer"></span>
+    <app-search></app-search>
   </mat-toolbar>`,
-  styles: [`mat-toolbar{background-color: white; border-bottom: lightgray 1px solid;} button{margin-left: 20px}`]
+  styles: [`mat-toolbar{background-color: white; border-bottom: lightgray 1px solid;} button{margin-left: 20px}.spacer {padding: 20px;}`]
 })
 export class NavBarComponent {
   title = 'Blogging site';
@@ -55,7 +57,7 @@ export class NavBarComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result !== undefined){
+      if (result !== undefined) {
         console.log('The add dialog was closed');
         this.blogService.sendBlog(result, () => location.reload());
       }
