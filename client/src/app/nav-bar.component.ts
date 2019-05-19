@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material';
 import {LoginDialogComponent} from './login.dialog.component';
@@ -15,9 +15,9 @@ export interface DialogData {
   template: `<mat-toolbar>
     <span>{{title}}</span>
     <button mat-raised-button (click)="home()">Home</button>
-    <button mat-raised-button (click)="openDialog()" *ngIf="!this.blogService.authenticated">Login</button>
-    <button mat-raised-button *ngIf="this.blogService.authenticated" (click)="logout()">Logout</button>
-    <button mat-raised-button *ngIf="this.blogService.authenticated" (click)="openAddDialog()">Add Post</button>
+    <button mat-raised-button (click)="openDialog()" *ngIf="!blogService.authenticated">Login</button>
+    <button mat-raised-button *ngIf="blogService.authenticated" (click)="logout()">Logout</button>
+    <button mat-raised-button *ngIf="blogService.authenticated" (click)="openAddDialog()">Add Post</button>
     <span class="spacer"></span>
     <app-search></app-search>
   </mat-toolbar>`,
@@ -25,9 +25,10 @@ export interface DialogData {
 })
 export class NavBarComponent {
   title = 'Blogging site';
+  @Output() blogAdded = new EventEmitter<string>();
 
-  constructor(private router: Router, public dialog: MatDialog, private blogService: BlogService) {
-    console.log(this.blogService.authenticated);
+  constructor(private router: Router, public dialog: MatDialog, public blogService: BlogService) {
+    // console.log(this.blogService.authenticated);
   }
 
   home() {
@@ -41,8 +42,10 @@ export class NavBarComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.blogService.authenticate(result, (json) => console.log(result));
+      // console.log('The dialog was closed');
+      this.blogService.authenticate(result, (json) => {
+        // console.log(result)
+      });
     });
   }
 
@@ -58,8 +61,11 @@ export class NavBarComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
-        console.log('The add dialog was closed');
-        this.blogService.sendBlog(result, () => location.reload());
+        // console.log('The add dialog was closed');
+        this.blogService.sendBlog(result, (json) => {
+         // console.log(json);
+          this.router.navigate([json.body.id]);
+        });
       }
     });
   }

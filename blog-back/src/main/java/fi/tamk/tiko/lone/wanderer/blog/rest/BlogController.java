@@ -85,7 +85,7 @@ public class BlogController {
 
     @PostMapping("/comment/add/{id}")
     public ResponseEntity<?> addComment(@PathVariable long id,@RequestBody Comment comment){
-        log.debug("id: {} and comment {}", id, comment.toString());
+        log.info("id: {} and comment {}", id, comment.toString());
         if(blogRepository.findById(id).isPresent()){
             log.debug("Got the post!");
             BlogPost blogPost = blogRepository.findById(id).get();

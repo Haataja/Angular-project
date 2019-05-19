@@ -42,7 +42,6 @@ export class SearchComponent implements OnInit {
   options: string[] = [];
   filteredOptions: Observable<string[]>;
   blogs: Blog[];
-  value: string;
 
   constructor(private router: Router, private blogService: BlogService) {
   }

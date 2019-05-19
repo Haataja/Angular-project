@@ -13,7 +13,7 @@ import {Router} from '@angular/router';
       </div>
       <p>{{blog.post.substr(0,125)}}...</p>
       <button mat-raised-button (click)="toDetails()">Read more</button>
-      <button mat-raised-button color="warn" *ngIf="this.blogService.authenticated" (click)="deleteBlog()">Delete</button>
+      <button mat-raised-button color="warn" *ngIf="blogService.authenticated" (click)="deleteBlog()">Delete</button>
       <mat-divider></mat-divider>
     </li>`,
   styles: [`h2, h3 {text-align: center} button {margin-left: 20px; margin-bottom: 10px} img{max-width: 25%}
@@ -23,7 +23,7 @@ export class BlogListItemComponent {
   @Input() blog: Blog;
   @Output() deleteClicked = new EventEmitter<string>();
 
-  constructor(private router: Router, private blogService: BlogService) {
+  constructor(private router: Router, public blogService: BlogService) {
   }
 
   toDetails() {

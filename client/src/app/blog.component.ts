@@ -17,15 +17,15 @@ import {MatDialog} from '@angular/material';
       <div class="text">
         <span *ngFor="let para of paragraphs">{{para}} <br/></span>
       </div>
-      <app-like-item [likes]="blog.likes" [blogID]="blog.id" (likeClicked)="this.refresh()"></app-like-item>
+      <app-like-item [likes]="blog.likes" [blogID]="blog.id" (likeClicked)="refresh()"></app-like-item>
       <mat-divider></mat-divider>
       <div *ngIf="blog.commentList.length !== 0">
-        <comment-list (deleteClicked)="this.refresh()" [id]="blog.id" [comments]="blog.commentList"></comment-list>
+        <comment-list (deleteClicked)="refresh()" [id]="blog.id" [comments]="blog.commentList"></comment-list>
       </div>
       <div *ngIf="blog.commentList.length === 0" class="be-first">
         <span>Be first to comment</span>
       </div>
-      <app-comment [blogID]="blog.id" (sendClicked)="this.refresh()"></app-comment>
+      <app-comment [blogID]="blog.id" (sendClicked)="refresh()"></app-comment>
     </div>
   `,
   styles: [`img {max-width: 100%} .head {text-align: center} .text {margin-left: 20px; margin-bottom: 30px} .be-first{text-align: right}`]
@@ -36,7 +36,7 @@ export class BlogComponent implements OnInit {
   id: number;
   paragraphs: string[];
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private service: BlogService, public dialog: MatDialog) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, public service: BlogService, public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -44,7 +44,7 @@ export class BlogComponent implements OnInit {
       this.id = params.id;
       // console.log(id);
       this.service.blog(this.id, jsonObject => {
-        console.log(jsonObject);
+        // console.log(jsonObject);
         this.blog = jsonObject;
         this.paragraphs = this.blog.post.split('\n');
         this.isDefined = true;
@@ -69,7 +69,7 @@ export class BlogComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
-        console.log('The add dialog was closed');
+        // console.log('The add dialog was closed');
         this.blog.author = result.author;
         this.blog.title = result.title;
         this.blog.post = result.post;

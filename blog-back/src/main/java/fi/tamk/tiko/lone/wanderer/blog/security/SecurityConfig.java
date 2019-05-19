@@ -14,15 +14,9 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-//@Configuration
-//@EnableWebSecurity
+@Configuration
+@EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
-    @Value("${blog.user.name}")
-    private String username;
-
-    @Value("${blog.user.password}")
-    private String password;
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
@@ -33,8 +27,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers("/posts/*").permitAll()
                 .antMatchers("/posts").permitAll()
-                .antMatchers("/comment/*").permitAll()
+                .antMatchers("/comment/add/*").permitAll()
                 .antMatchers("/posts/like/*").permitAll()
+                .antMatchers("/posts/unlike/*").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .logout().logoutSuccessUrl("/")
@@ -43,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/css/**", "/js/**", "/img/**", "/static/**","/**.json");
+        web.ignoring().antMatchers("/css/**", "/js/**", "/img/**", "/static/**","/static/assets/**","/styles*","/**.json", "/runtime*","/main*","/poly*");
     }
 }
 

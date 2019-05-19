@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-about',
   template: `<h3>{{title | uppercase}}</h3>
-  <img src="../assets/Gallen_Kallela.jpg"/>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Gallen_Kallela_Lemminkainens_Mother.jpg/1280px-Gallen_Kallela_Lemminkainens_Mother.jpg"/>
   <p>{{about}}</p>
   <h3>{{'recent posts' | uppercase}}</h3>`,
   styles: [`img {height: auto;max-width: 50%;}`]
