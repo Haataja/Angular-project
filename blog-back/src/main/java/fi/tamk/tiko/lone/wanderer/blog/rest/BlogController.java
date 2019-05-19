@@ -16,6 +16,7 @@ import fi.tamk.tiko.lone.wanderer.blog.blog.Comment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -51,7 +52,7 @@ public class BlogController {
     @PostMapping("/posts/add")
     public ResponseEntity<?> addPost(@RequestBody BlogPost blogPost){
         //log.debug(blogPost.getAuthor() + " : " + blogPost.getTitle() + " : " + blogPost.getPost() + " : "+blogPost.getUrl() + " : ");
-        return new ResponseEntity<>(blogRepository.save(blogPost), HttpStatus.OK);
+        return new ResponseEntity<>(blogRepository.save(blogPost), HttpStatus.CREATED);
     }
 
     @PostMapping("/posts/modify/{id}")
@@ -65,13 +66,14 @@ public class BlogController {
             if(blogPost.getUrl() != null){
                 firstBlogPost.setUrl(blogPost.getUrl());
             }
-            return new ResponseEntity<>(blogRepository.save(firstBlogPost), HttpStatus.OK);
+            blogRepository.save(firstBlogPost);
+            return new ResponseEntity<>(firstBlogPost, HttpStatus.OK);
         }else {
             return new ResponseEntity<>(blogPost, HttpStatus.NOT_FOUND);
         }
     }
 
-    @RequestMapping("/posts/delete/{id}")
+    @RequestMapping(value = "/posts/delete/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> deletePost(@PathVariable long id){
         if(blogRepository.findById(id).isPresent()){
             blogRepository.deleteById(id);
@@ -81,7 +83,7 @@ public class BlogController {
         }
     }
 
-    @PostMapping("/comment/{id}")
+    @PostMapping("/comment/add/{id}")
     public ResponseEntity<?> addComment(@PathVariable long id,@RequestBody Comment comment){
         log.debug("id: {} and comment {}", id, comment.toString());
         if(blogRepository.findById(id).isPresent()){
@@ -90,13 +92,13 @@ public class BlogController {
             comment.setBlogPost(blogPost);
             blogPost.getCommentList().add(comment);
             blogRepository.save(blogPost);
-            return new ResponseEntity<>(comment,HttpStatus.OK);
+            return new ResponseEntity<>(blogPost.getCommentList(),HttpStatus.OK);
         } else {
             return new ResponseEntity<>(comment,HttpStatus.NOT_FOUND);
         }
     }
 
-    @RequestMapping("/comment/delete/{postID}")
+    @RequestMapping(value = "/comment/delete/{postID}", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteComment(@PathVariable long postID, @RequestParam long commentId){
         if(blogRepository.findById(postID).isPresent()){
             BlogPost blogPost = blogRepository.findById(postID).get();

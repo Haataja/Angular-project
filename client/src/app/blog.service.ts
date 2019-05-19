@@ -40,7 +40,7 @@ export class BlogService {
   }
 
   sendComment(blogID: number, userInput: { nickname: string; comment: string }, callback: () => void) {
-    console.log(this.API_COMMENT_URL + '/' + blogID);
+    console.log(this.API_COMMENT_URL + '/add/' + blogID);
     this.http.post(this.API_COMMENT_URL + '/' + blogID,
       {commentField: userInput.comment, nickname: userInput.nickname},
       {observe: 'response'}).subscribe(response => {
