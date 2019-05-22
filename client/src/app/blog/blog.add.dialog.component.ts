@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import {DialogData} from './nav-bar.component';
+import {DialogData} from '../nav-bar.component';
 
 @Component({
   selector: 'app-dialog-overview-example-dialog',

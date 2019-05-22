@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
-import {Blog, BlogService} from './blog.service';
+import {Blog, BlogService} from './blog/blog.service';
 import {Router} from '@angular/router';
 
 
@@ -76,7 +76,7 @@ export class SearchComponent implements OnInit {
     for (const blog of this.blogs) {
       if (blog.title === this.myControl.value) {
         this.myControl.setValue('');
-        this.router.navigate([blog.id]);
+        this.router.navigate(['blog/', blog.id]);
       }
     }
   }

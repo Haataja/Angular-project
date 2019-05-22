@@ -27,7 +27,7 @@ export class BlogListItemComponent {
   }
 
   toDetails() {
-    this.router.navigate(['', this.blog.id]);
+    this.router.navigate(['blog/', this.blog.id]);
   }
 
   deleteBlog() {
