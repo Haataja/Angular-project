@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `<app-nav-bar></app-nav-bar>
-  <div fxLayout="row" fxLayoutAlign="space-between">
+  <div fxLayout="row" fxLayoutAlign="space-between"  fxLayout.md="column" fxLayout.sm="column" fxLayout.xs="column" fxFlexFill fxHide.yba >
     <div fxFlex="75%"><router-outlet></router-outlet></div>
     <div fxFlex="25%"><app-about></app-about></div>
   </div>`,
