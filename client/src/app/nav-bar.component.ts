@@ -64,7 +64,7 @@ export class NavBarComponent {
         // console.log('The add dialog was closed');
         this.blogService.sendBlog(result, (json) => {
          // console.log(json);
-          this.router.navigate([json.body.id]);
+          this.router.navigate(['blog/', json.body.id]);
         });
       }
     });

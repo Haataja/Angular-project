@@ -21,7 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class BaseController {
     private Logger log = LoggerFactory.getLogger(this.getClass());
 
-    @RequestMapping(value = {"/home", "/admin"})
+    @RequestMapping(value = {"/home", "/", "/blog/*"})
     public ModelAndView getLoginInfo() {
         return new ModelAndView("index.html");
     }

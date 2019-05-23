@@ -1,6 +1,5 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import {DialogData} from '../nav-bar.component';
 
 @Component({
   selector: 'app-dialog-overview-example-dialog',
@@ -47,7 +46,14 @@ import {DialogData} from '../nav-bar.component';
       <br/>
     </form>
   </div>`,
-  styles: [`.container {display: flex;flex-direction: column;}.container > * {width: 100%}`]
+  styles: [`.container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container > * {
+    width: 100%
+  }`]
 })
 export class BlogAddDialogComponent {
 

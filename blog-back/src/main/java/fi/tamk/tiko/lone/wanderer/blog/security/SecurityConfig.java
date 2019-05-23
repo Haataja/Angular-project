@@ -27,6 +27,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers("/posts/*").permitAll()
                 .antMatchers("/posts").permitAll()
+                .antMatchers("/home").permitAll()
+                .antMatchers("/blog/*").permitAll()
                 .antMatchers("/comment/add/*").permitAll()
                 .antMatchers("/posts/like/*").permitAll()
                 .antMatchers("/posts/unlike/*").permitAll()
@@ -38,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/css/**", "/js/**", "/img/**", "/static/**","/static/assets/**","/styles*","/**.json", "/runtime*","/main*","/poly*");
+        web.ignoring().antMatchers("/favicon*", "/js/**", "/img/**", "/static/**","/static/assets/**","/styles*","/**.json", "/runtime*","/main*","/poly*");
     }
 }
 
